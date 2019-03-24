@@ -1,0 +1,130 @@
+﻿create database QLBanhNgot
+
+use QLBanhNgot
+
+go
+
+create table NhanVien
+(
+	MaNV int Identity(1,1) primary key,
+	TenNV nvarchar(30) not null,
+	SDT char(12),
+	NamSinh date
+)
+create table NguyenLieu
+(
+	MaNL int Identity(1,1) primary key,
+	TenNL nvarchar(50),
+	Gia int,
+	NhaCC nvarchar(40),
+	HanSD date
+)
+
+create table PhanQuyen
+(
+	MaPQ int Identity(1,1) primary key,
+	TenPQ nvarchar (30),
+)
+create table DangNhap
+(
+	TK nvarchar(50) primary key,
+	MK nvarchar(10),
+	MaPQ int,
+	foreign key (MaPQ) references PhanQuyen(MaPQ)
+)
+create table LoaiSP
+(
+	MaLoai int Identity(1,1) primary key,
+	TenLoai nvarchar(20) ,
+	
+)
+create table SanPham
+(
+	MaSP int Identity(1,1) primary key,
+	TenSP nvarchar(100) ,
+	gia int,
+	MaLoai int,
+	foreign key (MaLoai) references LoaiSP(MaLoai)
+)
+create table HoaDon
+(
+	MaHD int Identity(1,1) primary key,	
+	NgayLap date
+
+)
+create table ChiTietHoaDon
+(
+	MaHD int,	
+	MaSP int,
+	SL int Check(SL>0),
+	DonGia Decimal(18,0) Check(Dongia>=0),	
+
+	CONSTRAINT PK_CTHD PRIMARY KEY(MaHD,MaSP),
+	CONSTRAINT PK_SP foreign key (MaSP) references SanPham(MaSP),
+	CONSTRAINT PK_HD foreign key (MaHD) references HoaDon(MaHD)
+)
+
+
+set dateformat dmy
+
+
+
+
+
+insert into NhanVien(TenNV,SDT,NamSinh) values (N'Nguyễn Văn Nam','548654213486','07/02/1995')
+insert into NhanVien(TenNV,SDT,NamSinh) values (N'Trần Thị Ngọc Thảo','120036545001','09/01/1993')
+insert into NhanVien(TenNV,SDT,NamSinh) values (N'Nguyễn Thị Trâm','220015486212','24/08/1994')
+insert into NhanVien(TenNV,SDT,NamSinh) values (N'Võ Hữu Hưng','323202105462','25/12/1989')
+insert into NhanVien(TenNV,SDT,NamSinh) values (N'Phạm Ngọc Lan','125400221549','05/11/1999')
+
+
+
+
+insert into NguyenLieu(TenNL,Gia,NhaCC,HanSD) values (N'Đường',20000,N'Cửa hàng nguyên liệu','01/03/2019')
+insert into NguyenLieu(TenNL,Gia,NhaCC,HanSD) values (N'Sữa',60000,N'Cửa hàng nguyên liệu','02/03/2019')
+insert into NguyenLieu(TenNL,Gia,NhaCC,HanSD) values (N'Bột sữa',80000,N'Cửa hàng nguyên liệu','01/03/2019')
+insert into NguyenLieu(TenNL,Gia,NhaCC,HanSD) values (N'Trứng',130000,N'Cửa hàng nguyên liệu','01/03/2019')
+insert into NguyenLieu(TenNL,Gia,NhaCC,HanSD) values (N'Bột nở',50000,N'Đại lý Bột','01/03/2019')
+insert into NguyenLieu(TenNL,Gia,NhaCC,HanSD) values (N'Bột mì',120000,N'Đại lý Bột','01/03/2019')
+insert into NguyenLieu(TenNL,Gia,NhaCC,HanSD) values (N'Dầu ăn',80000,N'Siêu thị Vissan','22/03/2019')
+insert into NguyenLieu(TenNL,Gia,NhaCC,HanSD) values (N'Kẹo',30000,N'Đai lý kẹo','02/03/2019')
+
+
+
+insert into PhanQuyen(TenPQ) values (N'Admin')
+insert into PhanQuyen(TenPQ) values (N'User')
+
+insert into DangNhap(TK,MK,MaPQ) values ('manakilosi','7315789',1)
+insert into DangNhap(TK,MK,MaPQ) values ('Admin','123',1)
+insert into DangNhap(TK,MK,MaPQ) values ('start11','haha15454',2)
+insert into DangNhap(TK,MK,MaPQ) values ('TNQLTS','111111',2)
+
+insert into LoaiSP(TenLoai) values (N'Bread')
+insert into LoaiSP(TenLoai) values (N'Donut')
+insert into LoaiSP(TenLoai) values (N'Choux')
+insert into LoaiSP(TenLoai) values (N'Cupcake')
+insert into LoaiSP(TenLoai) values (N'Cookie')
+
+
+insert into SanPham(TenSP,gia,MaLoai) values (N'Bánh mì mứt dâu',30000,1)
+insert into SanPham(TenSP,gia,MaLoai) values (N'Bánh mì trà xanh',30000,1)
+insert into SanPham(TenSP,gia,MaLoai) values (N'Bánh mì bơ sữa',30000,1)
+insert into SanPham(TenSP,gia,MaLoai) values (N'Bánh vòng socola',30000,2)
+insert into SanPham(TenSP,gia,MaLoai) values (N'Bánh vòng dâu',30000,2)
+insert into SanPham(TenSP,gia,MaLoai) values (N'Bánh vòng mạch nha',30000,2)
+insert into SanPham(TenSP,gia,MaLoai) values (N'Bánh su kem dừa',30000,3)
+insert into SanPham(TenSP,gia,MaLoai) values (N'Bánh su kem khoai môn',30000,3)
+insert into SanPham(TenSP,gia,MaLoai) values (N'Bánh su kem socola',30000,3)
+insert into SanPham(TenSP,gia,MaLoai) values (N'Bánh bông lan socola',30000,4)
+insert into SanPham(TenSP,gia,MaLoai) values (N'Bánh bông lan vani',30000,4)
+insert into SanPham(TenSP,gia,MaLoai) values (N'Bánh bông lan kem tươi',30000,4)
+insert into SanPham(TenSP,gia,MaLoai) values (N'Cookie giáng sinh',30000,5)
+insert into SanPham(TenSP,gia,MaLoai) values (N'Cookie ngôi sao',30000,5)
+insert into SanPham(TenSP,gia,MaLoai) values (N'Cookie trà xanh',30000,5)
+
+
+
+
+
+
+
