@@ -5,6 +5,8 @@
  */
 package Model;
 
+import Database.database;
+import java.sql.ResultSet;
 /**
  *
  * @author ASUS
