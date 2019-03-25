@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package Controller;
 
-import Database.database;
+import Model.database;
 import java.sql.ResultSet;
 /**
  *
