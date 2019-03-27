@@ -12,5 +12,14 @@ import java.sql.ResultSet;
  * @author ASUS
  */
 public class TruyVan {
-    
+    database db;
+    public TruyVan()
+    {
+        db =  new database();
+    }
+    public ResultSet taikhoan(String tk)
+    {
+        String sql = "select * from DangNhap where TK=N'"+tk+"'";
+        return db.ExcuteQueryGetTable(sql);
+    }
 }

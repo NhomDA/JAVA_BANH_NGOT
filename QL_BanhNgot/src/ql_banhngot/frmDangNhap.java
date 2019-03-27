@@ -4,18 +4,24 @@
  * and open the template in the editor.
  */
 package ql_banhngot;
-
+import Controller.TruyVan;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 /**
  *
  * @author ASUS
  */
 public class frmDangNhap extends javax.swing.JFrame {
 
+    ResultSet rs = null;
+    TruyVan sql;
     /**
      * Creates new form frmDangNhap
      */
     public frmDangNhap() {
         initComponents();
+        sql = new TruyVan();
     }
 
     /**
@@ -40,9 +46,12 @@ public class frmDangNhap extends javax.swing.JFrame {
         btnThoat = new javax.swing.JButton();
         txtMK = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Đăng nhập");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
 
+        panel1.setBackground(new java.awt.Color(153, 255, 255));
         panel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -51,7 +60,10 @@ public class frmDangNhap extends javax.swing.JFrame {
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        panel2.setBackground(new java.awt.Color(153, 204, 255));
         panel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\Login.png")); // NOI18N
@@ -74,19 +86,33 @@ public class frmDangNhap extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
+
         jLabel3.setText("Tài khoản:");
 
         jLabel4.setText("Mật khẩu:");
 
+        btnDangNhap.setBackground(new java.awt.Color(255, 255, 153));
         btnDangNhap.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\login-30.png")); // NOI18N
         btnDangNhap.setText("Đăng nhập");
         btnDangNhap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangNhapActionPerformed(evt);
+            }
+        });
 
+        btnThoat.setBackground(new java.awt.Color(255, 255, 153));
         btnThoat.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\cancel-30.png")); // NOI18N
         btnThoat.setText("Thoát");
         btnThoat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThoatActionPerformed(evt);
+            }
+        });
 
-        txtMK.setText("jPasswordField1");
+        txtMK.setToolTipText("");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -108,7 +134,7 @@ public class frmDangNhap extends javax.swing.JFrame {
                         .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtMK)
                     .addComponent(txtTK))
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,9 +149,9 @@ public class frmDangNhap extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addGap(47, 47, 47)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnThoat)
-                    .addComponent(btnDangNhap))
-                .addContainerGap(67, Short.MAX_VALUE))
+                    .addComponent(btnDangNhap)
+                    .addComponent(btnThoat))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
@@ -174,21 +200,58 @@ public class frmDangNhap extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(panel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+        // TODO add your handling code here:
+        rs = sql.taikhoan(txtTK.getText());
+       
+        
+        
+        
+        if(txtTK.getText().equals("") || txtMK.getPassword().length == 0)
+            JOptionPane.showConfirmDialog(this,"Vui lòng không để trống","Thông báo",JOptionPane.WARNING_MESSAGE);
+        else
+        { 
+            try{
+                while(rs.next())
+                {
+                    if(String.copyValueOf(txtMK.getPassword()).equals(rs.getString("MK")))
+                    {
+                        JOptionPane.showConfirmDialog(this,"Đăng nhập thành công!!","Thông báo",JOptionPane.OK_OPTION);
+                    }
+                    else
+                    {
+                        JOptionPane.showConfirmDialog(this,"Tài khoản hoặc mật khẩu không đúng !!!!","Thông báo",JOptionPane.WARNING_MESSAGE);
+                    }
+                }
+//                rs.close();
+            }catch(SQLException ex)
+            {
+                System.out.println(ex.toString());
+            }           
+        }
+        
+    }//GEN-LAST:event_btnDangNhapActionPerformed
+
+    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
+        // TODO add your handling code here:
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog (this, "Bạn có muốn thoát","Thông báo",dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION)
+        {
+            System.exit(0);
+        }
+        
+    }//GEN-LAST:event_btnThoatActionPerformed
 
     /**
      * @param args the command line arguments
