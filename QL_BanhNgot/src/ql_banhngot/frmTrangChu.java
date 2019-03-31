@@ -5,19 +5,53 @@
  */
 package ql_banhngot;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ASUS
  */
 public class frmTrangChu extends javax.swing.JFrame {
 
+    private home home;
+    private NhanVien nhanvien;
+    private QuanLy quanly;
     /**
      * Creates new form frmTrangChu
      */
     public frmTrangChu() {
+        
         initComponents();
+        PhanQuyen();
+        home = new home();
+        pnMain.removeAll();
+        pnMain.add(home);
+        pnMain.validate();
     }
-
+    public void PhanQuyen() {
+        frmDangNhap dn = new frmDangNhap();
+        int quyen = dn.quyen();
+        if(quyen == 1)
+        {           
+            btnNhanVien.setEnabled(true);
+            btnSanPham.setEnabled(true);
+            btnNguyenLieu.setEnabled(true);
+            btnThanhToan.setEnabled(false);
+            btnThongKe.setEnabled(true);
+            btnQuanLy.setEnabled(true);
+        }
+        if(quyen == 2)
+        {
+            btnNhanVien.setEnabled(false);
+            btnSanPham.setEnabled(true);
+            btnNguyenLieu.setEnabled(true);
+            btnThanhToan.setEnabled(true);
+            btnThongKe.setEnabled(false);
+            btnQuanLy.setEnabled(false);
+        }
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,21 +61,158 @@ public class frmTrangChu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jToolBar1 = new javax.swing.JToolBar();
+        btnSanPham = new javax.swing.JButton();
+        btnNguyenLieu = new javax.swing.JButton();
+        btnThanhToan = new javax.swing.JButton();
+        btnNhanVien = new javax.swing.JButton();
+        btnThongKe = new javax.swing.JButton();
+        btnQuanLy = new javax.swing.JButton();
+        btnDangXuat = new javax.swing.JButton();
+        pnMain = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("BÁNH NGỌT");
+        setForeground(new java.awt.Color(102, 255, 255));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
+
+        jToolBar1.setRollover(true);
+
+        btnSanPham.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\sanpham1-30.png")); // NOI18N
+        btnSanPham.setText("SẢN PHẨM");
+        btnSanPham.setFocusable(false);
+        btnSanPham.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSanPham.setMaximumSize(new java.awt.Dimension(67, 55));
+        btnSanPham.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnSanPham);
+
+        btnNguyenLieu.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\Nguyenlieu-30.png")); // NOI18N
+        btnNguyenLieu.setText("NGUYÊN LIỆU");
+        btnNguyenLieu.setFocusable(false);
+        btnNguyenLieu.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnNguyenLieu.setMaximumSize(new java.awt.Dimension(81, 55));
+        btnNguyenLieu.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnNguyenLieu);
+
+        btnThanhToan.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\ThanhToan-30.png")); // NOI18N
+        btnThanhToan.setText("THANH TOÁN");
+        btnThanhToan.setFocusable(false);
+        btnThanhToan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnThanhToan.setMaximumSize(new java.awt.Dimension(81, 55));
+        btnThanhToan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnThanhToan);
+
+        btnNhanVien.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\nhanvien-30.png")); // NOI18N
+        btnNhanVien.setText("NHÂN VIÊN");
+        btnNhanVien.setFocusable(false);
+        btnNhanVien.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnNhanVien.setMaximumSize(new java.awt.Dimension(71, 55));
+        btnNhanVien.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnNhanVien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhanVienActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnNhanVien);
+
+        btnThongKe.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\ThongKe-30.png")); // NOI18N
+        btnThongKe.setText("THỐNG KÊ");
+        btnThongKe.setFocusable(false);
+        btnThongKe.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnThongKe.setMaximumSize(new java.awt.Dimension(67, 55));
+        btnThongKe.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnThongKe);
+
+        btnQuanLy.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\QL-30.png")); // NOI18N
+        btnQuanLy.setText("QUẢN LÝ");
+        btnQuanLy.setFocusable(false);
+        btnQuanLy.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnQuanLy.setMaximumSize(new java.awt.Dimension(59, 55));
+        btnQuanLy.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnQuanLy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuanLyActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnQuanLy);
+
+        btnDangXuat.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\logout-30.png")); // NOI18N
+        btnDangXuat.setText("ĐĂNG XUẤT");
+        btnDangXuat.setFocusable(false);
+        btnDangXuat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDangXuat.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangXuatActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnDangXuat);
+
+        pnMain.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(pnMain, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
+        // TODO add your handling code here:
+        nhanvien = new NhanVien();
+        pnMain.removeAll();
+        pnMain.add(nhanvien);
+        pnMain.validate();
+    }//GEN-LAST:event_btnNhanVienActionPerformed
+
+    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
+        // TODO add your handling code here:
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog (this, "Bạn có muốn đăng xuất","Thông báo",dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION)
+        {
+            this.setVisible(false);
+            new frmDangNhap().setVisible(true);
+        }
+    }//GEN-LAST:event_btnDangXuatActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog (this, "Bạn có muốn đăng xuất","Thông báo",dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION)
+        {
+            this.setVisible(false);
+            new frmDangNhap().setVisible(true);
+        }
+    }//GEN-LAST:event_formWindowClosing
+
+    private void btnQuanLyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuanLyActionPerformed
+        // TODO add your handling code here:
+        quanly = new QuanLy();
+        pnMain.removeAll();
+        pnMain.add(quanly);
+        pnMain.validate();
+    }//GEN-LAST:event_btnQuanLyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -74,10 +245,20 @@ public class frmTrangChu extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new frmTrangChu().setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDangXuat;
+    private javax.swing.JButton btnNguyenLieu;
+    private javax.swing.JButton btnNhanVien;
+    private javax.swing.JButton btnQuanLy;
+    private javax.swing.JButton btnSanPham;
+    private javax.swing.JButton btnThanhToan;
+    private javax.swing.JButton btnThongKe;
+    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JPanel pnMain;
     // End of variables declaration//GEN-END:variables
 }

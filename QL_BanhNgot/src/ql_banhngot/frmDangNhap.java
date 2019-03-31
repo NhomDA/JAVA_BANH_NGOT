@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  * @author ASUS
  */
 public class frmDangNhap extends javax.swing.JFrame {
-
+    static int q;
     ResultSet rs = null;
     TruyVan sql;
     /**
@@ -22,6 +22,8 @@ public class frmDangNhap extends javax.swing.JFrame {
     public frmDangNhap() {
         initComponents();
         sql = new TruyVan();
+        txtMK.setText("");
+        txtTK.setText("");
     }
 
     /**
@@ -50,6 +52,11 @@ public class frmDangNhap extends javax.swing.JFrame {
         setTitle("Đăng nhập");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         panel1.setBackground(new java.awt.Color(153, 255, 255));
         panel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -210,34 +217,44 @@ public class frmDangNhap extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public int quyen()
+    {               
+        return q;
+    }
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         // TODO add your handling code here:
         rs = sql.taikhoan(txtTK.getText());
-       
-        
-        
         
         if(txtTK.getText().equals("") || txtMK.getPassword().length == 0)
             JOptionPane.showConfirmDialog(this,"Vui lòng không để trống","Thông báo",JOptionPane.WARNING_MESSAGE);
         else
         { 
+            int temp = 0;
             try{
                 while(rs.next())
                 {
                     if(String.copyValueOf(txtMK.getPassword()).equals(rs.getString("MK")))
                     {
-                        JOptionPane.showConfirmDialog(this,"Đăng nhập thành công!!","Thông báo",JOptionPane.OK_OPTION);
+                        temp = 1;           
+                        q = rs.getInt("MaPQ");            
                     }
-                    else
-                    {
-                        JOptionPane.showConfirmDialog(this,"Tài khoản hoặc mật khẩu không đúng !!!!","Thông báo",JOptionPane.WARNING_MESSAGE);
-                    }
+                    
                 }
 //                rs.close();
             }catch(SQLException ex)
             {
                 System.out.println(ex.toString());
-            }           
+            }
+            if(temp == 1)
+            {
+                JOptionPane.showConfirmDialog(this,"Đăng nhập thành công!!","Thông báo",JOptionPane.OK_OPTION);            
+                this.setVisible(false);
+                new frmTrangChu().setVisible(true);
+            }
+            else
+            {
+                JOptionPane.showConfirmDialog(this,"Tài khoản hoặc mật khẩu không đúng !!!!","Thông báo",JOptionPane.WARNING_MESSAGE);
+            }
         }
         
     }//GEN-LAST:event_btnDangNhapActionPerformed
@@ -252,6 +269,16 @@ public class frmDangNhap extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnThoatActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog (this, "Bạn có muốn thoát","Thông báo",dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION)
+        {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
