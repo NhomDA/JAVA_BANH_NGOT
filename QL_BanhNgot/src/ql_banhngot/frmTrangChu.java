@@ -5,6 +5,7 @@
  */
 package ql_banhngot;
 
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,9 +14,14 @@ import javax.swing.JOptionPane;
  */
 public class frmTrangChu extends javax.swing.JFrame {
 
-    private home home;
-    private pnNhanVien nhanvien;
-    private pnQuanLy quanly;
+    private int check ;
+    private JINhanVien nhanvien;
+    private JINguyenLieu nguyenlieu;
+    private JIQuanLy quanly;
+    private JISanPham sanpham;
+    private JIThanhToan thanhtoan;
+    private JIThongKe thongke;
+            
     /**
      * Creates new form frmTrangChu
      */
@@ -23,10 +29,10 @@ public class frmTrangChu extends javax.swing.JFrame {
         
         initComponents();
         PhanQuyen();
-        home = new home();
-        pnMain.removeAll();
-        pnMain.add(home);
-        pnMain.validate();
+//        home = new home();
+//        pnMain.removeAll();
+//        pnMain.add(home);
+//        pnMain.validate();
     }
     public void PhanQuyen() {
         frmDangNhap dn = new frmDangNhap();
@@ -69,7 +75,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         btnThongKe = new javax.swing.JButton();
         btnQuanLy = new javax.swing.JButton();
         btnDangXuat = new javax.swing.JButton();
-        pnMain = new javax.swing.JPanel();
+        DKPanel = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("BÁNH NGỌT");
@@ -88,6 +94,11 @@ public class frmTrangChu extends javax.swing.JFrame {
         btnSanPham.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSanPham.setMaximumSize(new java.awt.Dimension(67, 55));
         btnSanPham.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnSanPham.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSanPhamActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnSanPham);
 
         btnNguyenLieu.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\Nguyenlieu-30.png")); // NOI18N
@@ -96,6 +107,11 @@ public class frmTrangChu extends javax.swing.JFrame {
         btnNguyenLieu.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNguyenLieu.setMaximumSize(new java.awt.Dimension(81, 55));
         btnNguyenLieu.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnNguyenLieu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNguyenLieuActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnNguyenLieu);
 
         btnThanhToan.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\ThanhToan-30.png")); // NOI18N
@@ -104,6 +120,11 @@ public class frmTrangChu extends javax.swing.JFrame {
         btnThanhToan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnThanhToan.setMaximumSize(new java.awt.Dimension(81, 55));
         btnThanhToan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnThanhToan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThanhToanActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnThanhToan);
 
         btnNhanVien.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\nhanvien-30.png")); // NOI18N
@@ -125,6 +146,11 @@ public class frmTrangChu extends javax.swing.JFrame {
         btnThongKe.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnThongKe.setMaximumSize(new java.awt.Dimension(67, 55));
         btnThongKe.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnThongKe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThongKeActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnThongKe);
 
         btnQuanLy.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\QL-30.png")); // NOI18N
@@ -152,25 +178,30 @@ public class frmTrangChu extends javax.swing.JFrame {
         });
         jToolBar1.add(btnDangXuat);
 
-        pnMain.setLayout(new java.awt.BorderLayout());
+        javax.swing.GroupLayout DKPanelLayout = new javax.swing.GroupLayout(DKPanel);
+        DKPanel.setLayout(DKPanelLayout);
+        DKPanelLayout.setHorizontalGroup(
+            DKPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        DKPanelLayout.setVerticalGroup(
+            DKPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 344, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
+            .addComponent(DKPanel, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
-                .addComponent(pnMain, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(DKPanel))
         );
 
         pack();
@@ -178,10 +209,23 @@ public class frmTrangChu extends javax.swing.JFrame {
 
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
         // TODO add your handling code here:
-        nhanvien = new pnNhanVien();
-        pnMain.removeAll();
-        pnMain.add(nhanvien);
-        pnMain.validate();
+        nhanvien = new JINhanVien();
+        check = 0 ;
+        for(JInternalFrame frmChild:DKPanel.getAllFrames()){
+
+            if(frmChild.getTitle().equals(nhanvien.getTitle()))
+            {
+                check = 1;
+            }        
+        } 
+        if(check == 0)
+        {
+            DKPanel.add(nhanvien);
+            nhanvien.setVisible(true);
+        }
+        else{
+            JOptionPane.showConfirmDialog(this,"Đã có form hiện hành!!","Thông báo",JOptionPane.YES_OPTION);
+        }
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
     private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
@@ -208,11 +252,108 @@ public class frmTrangChu extends javax.swing.JFrame {
 
     private void btnQuanLyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuanLyActionPerformed
         // TODO add your handling code here:
-        quanly = new pnQuanLy();
-        pnMain.removeAll();
-        pnMain.add(quanly);
-        pnMain.validate();
+        quanly = new JIQuanLy();
+        check = 0 ;
+        for(JInternalFrame frmChild:DKPanel.getAllFrames()){
+
+            if(frmChild.getTitle().equals(quanly.getTitle()))
+            {
+                check = 1;
+            }        
+        } 
+        if(check == 0)
+        {
+            DKPanel.add(quanly);
+            quanly.setVisible(true);
+        }
+        else{
+            JOptionPane.showConfirmDialog(this,"Đã có form hiện hành!!","Thông báo",JOptionPane.YES_OPTION);
+        }
     }//GEN-LAST:event_btnQuanLyActionPerformed
+
+    private void btnSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSanPhamActionPerformed
+        // TODO add your handling code here:
+        sanpham = new JISanPham();
+        check = 0 ;
+        for(JInternalFrame frmChild:DKPanel.getAllFrames()){
+
+            if(frmChild.getTitle().equals(sanpham.getTitle()))
+            {
+                check = 1;
+            }        
+        } 
+        if(check == 0)
+        {
+            DKPanel.add(sanpham);
+            sanpham.setVisible(true);
+        }
+        else{
+            JOptionPane.showConfirmDialog(this,"Đã có form hiện hành!!","Thông báo",JOptionPane.YES_OPTION);
+        }
+    }//GEN-LAST:event_btnSanPhamActionPerformed
+
+    private void btnNguyenLieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNguyenLieuActionPerformed
+        // TODO add your handling code here:
+        nguyenlieu = new JINguyenLieu();
+        check = 0 ;
+        for(JInternalFrame frmChild:DKPanel.getAllFrames()){
+
+            if(frmChild.getTitle().equals(nguyenlieu.getTitle()))
+            {
+                check = 1;
+            }        
+        } 
+        if(check == 0)
+        {
+            DKPanel.add(nguyenlieu);
+            nguyenlieu.setVisible(true);
+        }
+        else{
+            JOptionPane.showConfirmDialog(this,"Đã có form hiện hành!!","Thông báo",JOptionPane.YES_OPTION);
+        }
+    }//GEN-LAST:event_btnNguyenLieuActionPerformed
+
+    private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
+        // TODO add your handling code here:
+        thanhtoan = new JIThanhToan();
+        check = 0 ;
+        for(JInternalFrame frmChild:DKPanel.getAllFrames()){
+
+            if(frmChild.getTitle().equals(thanhtoan.getTitle()))
+            {
+                check = 1;
+            }        
+        } 
+        if(check == 0)
+        {
+            DKPanel.add(thanhtoan);
+            thanhtoan.setVisible(true);
+        }
+        else{
+            JOptionPane.showConfirmDialog(this,"Đã có form hiện hành!!","Thông báo",JOptionPane.YES_OPTION);
+        }
+    }//GEN-LAST:event_btnThanhToanActionPerformed
+
+    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
+        // TODO add your handling code here:
+        thongke = new JIThongKe();
+        check = 0 ;
+        for(JInternalFrame frmChild:DKPanel.getAllFrames()){
+
+            if(frmChild.getTitle().equals(thongke.getTitle()))
+            {
+                check = 1;
+            }        
+        } 
+        if(check == 0)
+        {
+            DKPanel.add(thongke);
+            thongke.setVisible(true);
+        }
+        else{
+            JOptionPane.showConfirmDialog(this,"Đã có form hiện hành!!","Thông báo",JOptionPane.YES_OPTION);
+        }
+    }//GEN-LAST:event_btnThongKeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,6 +392,7 @@ public class frmTrangChu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane DKPanel;
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnNguyenLieu;
     private javax.swing.JButton btnNhanVien;
@@ -259,6 +401,5 @@ public class frmTrangChu extends javax.swing.JFrame {
     private javax.swing.JButton btnThanhToan;
     private javax.swing.JButton btnThongKe;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JPanel pnMain;
     // End of variables declaration//GEN-END:variables
 }

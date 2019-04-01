@@ -15,18 +15,19 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ASUS
  */
-public class pnNhanVien extends javax.swing.JPanel {
+public class JINhanVien extends javax.swing.JInternalFrame {
 
     ResultSet rs = null;
     TruyVan sql;
     /**
-     * Creates new form NhanVien
+     * Creates new form JINhanVien
      */
-    public pnNhanVien() {
+    public JINhanVien() {
         initComponents();
         sql = new TruyVan();
         LoadNV();
     }
+
     
     public void LoadNV()
     {
@@ -83,6 +84,8 @@ public class pnNhanVien extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbNhanVien = new javax.swing.JTable();
 
+        setTitle("NHÂN VIÊN");
+
         tittle.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         tittle.setText("DANH SÁCH NHÂN VIÊN");
         tittle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -125,7 +128,7 @@ public class pnNhanVien extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lb_sdt)
                     .addComponent(lb_hoten)
@@ -202,12 +205,12 @@ public class pnNhanVien extends javax.swing.JPanel {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -223,6 +226,8 @@ public class pnNhanVien extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
