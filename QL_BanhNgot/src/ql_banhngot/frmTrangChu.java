@@ -14,8 +14,8 @@ import javax.swing.JOptionPane;
 public class frmTrangChu extends javax.swing.JFrame {
 
     private home home;
-    private NhanVien nhanvien;
-    private QuanLy quanly;
+    private pnNhanVien nhanvien;
+    private pnQuanLy quanly;
     /**
      * Creates new form frmTrangChu
      */
@@ -178,7 +178,7 @@ public class frmTrangChu extends javax.swing.JFrame {
 
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
         // TODO add your handling code here:
-        nhanvien = new NhanVien();
+        nhanvien = new pnNhanVien();
         pnMain.removeAll();
         pnMain.add(nhanvien);
         pnMain.validate();
@@ -208,7 +208,7 @@ public class frmTrangChu extends javax.swing.JFrame {
 
     private void btnQuanLyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuanLyActionPerformed
         // TODO add your handling code here:
-        quanly = new QuanLy();
+        quanly = new pnQuanLy();
         pnMain.removeAll();
         pnMain.add(quanly);
         pnMain.validate();

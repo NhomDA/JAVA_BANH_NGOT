@@ -5,19 +5,56 @@
  */
 package ql_banhngot;
 
+import Controller.TruyVan;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ASUS
  */
-public class NhanVien extends javax.swing.JPanel {
+public class pnNhanVien extends javax.swing.JPanel {
 
+    ResultSet rs = null;
+    TruyVan sql;
     /**
      * Creates new form NhanVien
      */
-    public NhanVien() {
+    public pnNhanVien() {
         initComponents();
+        sql = new TruyVan();
+        LoadNV();
     }
-
+    
+    public void LoadNV()
+    {
+        rs=sql.NhanVien();
+        Vector item=null;
+        String kt[]={"So","Hoten","SDT","Nam sinh"};
+        DefaultTableModel tableModel = new DefaultTableModel(kt,0);
+        tableModel.setRowCount(0);
+        try
+        {
+            while(rs.next())
+            {
+               
+                item = new Vector();
+                item.add(rs.getInt("MaNV")); 
+                item.add(rs.getString("TenNV"));
+                item.add(rs.getString("SDT"));
+                item.add(rs.getDate("NamSinh"));   
+                  
+                
+              tableModel.addRow(item);                
+            }
+            tbNhanVien.setModel(tableModel);
+        } catch (SQLException ex)
+        {
+            System.out.println(ex.toString());
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,7 +81,7 @@ public class NhanVien extends javax.swing.JPanel {
         lb_timkiem = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbNhanVien = new javax.swing.JTable();
 
         tittle.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         tittle.setText("DANH SÁCH NHÂN VIÊN");
@@ -95,28 +132,24 @@ public class NhanVien extends javax.swing.JPanel {
                     .addComponent(lb_namsinh))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_TenNV, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_Namsinh, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(btn_Them)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_Sua, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_Xoa, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(192, 192, 192)
-                                .addComponent(jButton1))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(txt_SDT, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(lb_timkiem)
-                                .addGap(18, 18, 18)
-                                .addComponent(txt_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(20, Short.MAX_VALUE))))
+                    .addComponent(txt_TenNV, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_Namsinh, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(btn_Them)
+                            .addGap(18, 18, 18)
+                            .addComponent(btn_Sua, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btn_Xoa, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(192, 192, 192)
+                            .addComponent(jButton1))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(txt_SDT, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(lb_timkiem)
+                            .addGap(18, 18, 18)
+                            .addComponent(txt_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,7 +177,7 @@ public class NhanVien extends javax.swing.JPanel {
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -155,7 +188,7 @@ public class NhanVien extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbNhanVien);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -202,11 +235,11 @@ public class NhanVien extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lb_hoten;
     private javax.swing.JLabel lb_namsinh;
     private javax.swing.JLabel lb_sdt;
     private javax.swing.JLabel lb_timkiem;
+    private javax.swing.JTable tbNhanVien;
     private javax.swing.JLabel tittle;
     private javax.swing.JTextField txt_Namsinh;
     private javax.swing.JTextField txt_SDT;
