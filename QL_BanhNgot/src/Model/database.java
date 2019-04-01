@@ -28,9 +28,7 @@ public class database {
                 System.out.println("Kết nối CSDL SQL Server thành công!");
             }
             
-        } catch (ClassNotFoundException ex) {
-            System.out.println(ex.toString());
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(ex.toString());
         }
 }

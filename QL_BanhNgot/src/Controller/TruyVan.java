@@ -22,4 +22,8 @@ public class TruyVan {
         String sql = "select * from DangNhap where TK=N'"+tk+"'";
         return db.ExcuteQueryGetTable(sql);
     }
+    public ResultSet NhanVien(){
+            String sql = "select * from NhanVien";
+            return db.ExcuteQueryGetTable(sql);
+        }
 }
