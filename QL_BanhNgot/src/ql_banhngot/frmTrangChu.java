@@ -5,6 +5,7 @@
  */
 package ql_banhngot;
 
+import Model.database;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
@@ -15,12 +16,6 @@ import javax.swing.JOptionPane;
 public class frmTrangChu extends javax.swing.JFrame {
 
     private int check ;
-    private JINhanVien nhanvien;
-    private JINguyenLieu nguyenlieu;
-    private JIQuanLy quanly;
-    private JISanPham sanpham;
-    private JIThanhToan thanhtoan;
-    private JIThongKe thongke;
             
     /**
      * Creates new form frmTrangChu
@@ -207,94 +202,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
-        // TODO add your handling code here:
-        nhanvien = new JINhanVien();
-        check = 0 ;
-        for(JInternalFrame frmChild:DKPanel.getAllFrames()){
-
-            if(frmChild.getTitle().equals(nhanvien.getTitle()))
-            {
-                check = 1;
-            }        
-        } 
-        if(check == 0)
-        {
-            DKPanel.add(nhanvien);
-            nhanvien.setVisible(true);
-        }
-        else{
-            JOptionPane.showConfirmDialog(this,"Đã có form hiện hành!!","Thông báo",JOptionPane.YES_OPTION);
-        }
-    }//GEN-LAST:event_btnNhanVienActionPerformed
-
-    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
-        // TODO add your handling code here:
-        int dialogButton = JOptionPane.YES_NO_OPTION;
-        int dialogResult = JOptionPane.showConfirmDialog (this, "Bạn có muốn đăng xuất","Thông báo",dialogButton);
-        if(dialogResult == JOptionPane.YES_OPTION)
-        {
-            this.setVisible(false);
-            new frmDangNhap().setVisible(true);
-        }
-    }//GEN-LAST:event_btnDangXuatActionPerformed
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
-        int dialogButton = JOptionPane.YES_NO_OPTION;
-        int dialogResult = JOptionPane.showConfirmDialog (this, "Bạn có muốn đăng xuất","Thông báo",dialogButton);
-        if(dialogResult == JOptionPane.YES_OPTION)
-        {
-            this.setVisible(false);
-            new frmDangNhap().setVisible(true);
-        }
-    }//GEN-LAST:event_formWindowClosing
-
-    private void btnQuanLyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuanLyActionPerformed
-        // TODO add your handling code here:
-        quanly = new JIQuanLy();
-        check = 0 ;
-        for(JInternalFrame frmChild:DKPanel.getAllFrames()){
-
-            if(frmChild.getTitle().equals(quanly.getTitle()))
-            {
-                check = 1;
-            }        
-        } 
-        if(check == 0)
-        {
-            DKPanel.add(quanly);
-            quanly.setVisible(true);
-        }
-        else{
-            JOptionPane.showConfirmDialog(this,"Đã có form hiện hành!!","Thông báo",JOptionPane.YES_OPTION);
-        }
-    }//GEN-LAST:event_btnQuanLyActionPerformed
-
-    private void btnSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSanPhamActionPerformed
-        // TODO add your handling code here:
-        sanpham = new JISanPham();
-        check = 0 ;
-        for(JInternalFrame frmChild:DKPanel.getAllFrames()){
-
-            if(frmChild.getTitle().equals(sanpham.getTitle()))
-            {
-                check = 1;
-            }        
-        } 
-        if(check == 0)
-        {
-            DKPanel.add(sanpham);
-            sanpham.setVisible(true);
-        }
-        else{
-            JOptionPane.showConfirmDialog(this,"Đã có form hiện hành!!","Thông báo",JOptionPane.YES_OPTION);
-        }
-    }//GEN-LAST:event_btnSanPhamActionPerformed
-
-    private void btnNguyenLieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNguyenLieuActionPerformed
-        // TODO add your handling code here:
-        nguyenlieu = new JINguyenLieu();
+    public void InitChildForm(JInternalFrame nguyenlieu){
         check = 0 ;
         for(JInternalFrame frmChild:DKPanel.getAllFrames()){
 
@@ -310,56 +218,71 @@ public class frmTrangChu extends javax.swing.JFrame {
         }
         else{
             JOptionPane.showConfirmDialog(this,"Đã có form hiện hành!!","Thông báo",JOptionPane.YES_OPTION);
+        }        
+    }
+
+    private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
+        // TODO add your handling code here:
+        InitChildForm(new JINhanVien());
+    }//GEN-LAST:event_btnNhanVienActionPerformed
+
+    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
+        // TODO add your handling code here:
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog (this, "Bạn có muốn đăng xuất","Thông báo",dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION)
+        {
+            this.setVisible(false);
+            new frmDangNhap().setVisible(true);
         }
+    }//GEN-LAST:event_btnDangXuatActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog (this, "Bạn có muốn đăng xuất","Thông báo",dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION)
+        {
+            this.setVisible(false);
+            new frmDangNhap().setVisible(true);
+        }
+    }//GEN-LAST:event_formWindowClosing
+
+    private void btnQuanLyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuanLyActionPerformed
+        // TODO add your handling code here:
+        InitChildForm(new JIQuanLy());
+    }//GEN-LAST:event_btnQuanLyActionPerformed
+
+    private void btnSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSanPhamActionPerformed
+        // TODO add your handling code here:
+        InitChildForm(new JISanPham());
+    }//GEN-LAST:event_btnSanPhamActionPerformed
+
+    
+    private void btnNguyenLieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNguyenLieuActionPerformed
+        // TODO add your handling code here:
+        InitChildForm(new JINguyenLieu());
+
     }//GEN-LAST:event_btnNguyenLieuActionPerformed
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
         // TODO add your handling code here:
-        thanhtoan = new JIThanhToan();
-        check = 0 ;
-        for(JInternalFrame frmChild:DKPanel.getAllFrames()){
-
-            if(frmChild.getTitle().equals(thanhtoan.getTitle()))
-            {
-                check = 1;
-            }        
-        } 
-        if(check == 0)
-        {
-            DKPanel.add(thanhtoan);
-            thanhtoan.setVisible(true);
-        }
-        else{
-            JOptionPane.showConfirmDialog(this,"Đã có form hiện hành!!","Thông báo",JOptionPane.YES_OPTION);
-        }
+        InitChildForm(new JIThanhToan());
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
         // TODO add your handling code here:
-        thongke = new JIThongKe();
-        check = 0 ;
-        for(JInternalFrame frmChild:DKPanel.getAllFrames()){
-
-            if(frmChild.getTitle().equals(thongke.getTitle()))
-            {
-                check = 1;
-            }        
-        } 
-        if(check == 0)
-        {
-            DKPanel.add(thongke);
-            thongke.setVisible(true);
-        }
-        else{
-            JOptionPane.showConfirmDialog(this,"Đã có form hiện hành!!","Thông báo",JOptionPane.YES_OPTION);
-        }
+        InitChildForm(new JIThongKe());
     }//GEN-LAST:event_btnThongKeActionPerformed
 
     /**
      * @param args the command line arguments
      */
+    static database db ;
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
+        db = new database();
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -381,7 +304,6 @@ public class frmTrangChu extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(frmTrangChu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
