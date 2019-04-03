@@ -209,6 +209,10 @@ public class frmTrangChu extends javax.swing.JFrame {
             if(frmChild.getTitle().equals(nguyenlieu.getTitle()))
             {
                 check = 1;
+                try {
+                    frmChild.setSelected(true);                    
+                } catch (Exception e) {
+                }
             }        
         } 
         if(check == 0)
@@ -216,9 +220,9 @@ public class frmTrangChu extends javax.swing.JFrame {
             DKPanel.add(nguyenlieu);
             nguyenlieu.setVisible(true);
         }
-        else{
-            JOptionPane.showConfirmDialog(this,"Đã có form hiện hành!!","Thông báo",JOptionPane.YES_OPTION);
-        }        
+//        else{
+//            JOptionPane.showConfirmDialog(this,"Đã có form hiện hành!!","Thông báo",JOptionPane.YES_OPTION);
+//        }        
     }
 
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
