@@ -72,7 +72,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         btnDangXuat = new javax.swing.JButton();
         DKPanel = new javax.swing.JDesktopPane();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("BÁNH NGỌT");
         setForeground(new java.awt.Color(102, 255, 255));
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -232,7 +232,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         int dialogResult = JOptionPane.showConfirmDialog (this, "Bạn có muốn đăng xuất","Thông báo",dialogButton);
         if(dialogResult == JOptionPane.YES_OPTION)
         {
-            this.setVisible(false);
+            this.dispose();
             new frmDangNhap().setVisible(true);
         }
     }//GEN-LAST:event_btnDangXuatActionPerformed
@@ -244,7 +244,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         int dialogResult = JOptionPane.showConfirmDialog (this, "Bạn có muốn đăng xuất","Thông báo",dialogButton);
         if(dialogResult == JOptionPane.YES_OPTION)
         {
-            this.setVisible(false);
+            this.dispose();
             new frmDangNhap().setVisible(true);
         }
     }//GEN-LAST:event_formWindowClosing

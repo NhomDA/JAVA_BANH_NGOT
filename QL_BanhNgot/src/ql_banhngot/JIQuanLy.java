@@ -430,7 +430,7 @@ public class JIQuanLy extends javax.swing.JInternalFrame {
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         // TODO add your handling code here:
         int dialogButton = JOptionPane.YES_NO_OPTION;
-        int dialogResult = JOptionPane.showConfirmDialog (this, "Bạn có muốn đăng xuất","Thông báo",dialogButton);
+        int dialogResult = JOptionPane.showConfirmDialog (this, "Bạn có muốn thoát","Thông báo",dialogButton);
         if(dialogResult == JOptionPane.YES_OPTION)
         {
             this.dispose();
