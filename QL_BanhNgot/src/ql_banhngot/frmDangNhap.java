@@ -48,7 +48,7 @@ public class frmDangNhap extends javax.swing.JFrame {
         btnThoat = new javax.swing.JButton();
         txtMK = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Đăng nhập");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
@@ -247,7 +247,7 @@ public class frmDangNhap extends javax.swing.JFrame {
             }
             if(temp == 1)
             {
-                JOptionPane.showConfirmDialog(this,"Đăng nhập thành công!!","Thông báo",JOptionPane.OK_OPTION);            
+                JOptionPane.showMessageDialog(this,"Đăng nhập thành công!!","Thông báo",JOptionPane.INFORMATION_MESSAGE);            
                 this.setVisible(false);
                 new frmTrangChu().setVisible(true);
             }

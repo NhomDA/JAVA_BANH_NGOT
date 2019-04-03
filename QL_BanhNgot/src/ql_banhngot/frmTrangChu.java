@@ -5,6 +5,13 @@
  */
 package ql_banhngot;
 
+<<<<<<< HEAD
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+=======
+import Model.database;
+>>>>>>> 3b1f48ec570e3257a5595d31bc02b054f3a2d08f
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
@@ -15,12 +22,6 @@ import javax.swing.JOptionPane;
 public class frmTrangChu extends javax.swing.JFrame {
 
     private int check ;
-    private JINhanVien nhanvien;
-    private JINguyenLieu nguyenlieu;
-    private JIQuanLy quanly;
-    private JISanPham sanpham;
-    private JIThanhToan thanhtoan;
-    private JIThongKe thongke;
             
     /**
      * Creates new form frmTrangChu
@@ -77,9 +78,10 @@ public class frmTrangChu extends javax.swing.JFrame {
         btnDangXuat = new javax.swing.JButton();
         DKPanel = new javax.swing.JDesktopPane();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("BÁNH NGỌT");
         setForeground(new java.awt.Color(102, 255, 255));
+        setSize(getMaximumSize());
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -88,7 +90,6 @@ public class frmTrangChu extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
-        btnSanPham.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\sanpham1-30.png")); // NOI18N
         btnSanPham.setText("SẢN PHẨM");
         btnSanPham.setFocusable(false);
         btnSanPham.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -101,7 +102,6 @@ public class frmTrangChu extends javax.swing.JFrame {
         });
         jToolBar1.add(btnSanPham);
 
-        btnNguyenLieu.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\Nguyenlieu-30.png")); // NOI18N
         btnNguyenLieu.setText("NGUYÊN LIỆU");
         btnNguyenLieu.setFocusable(false);
         btnNguyenLieu.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -114,7 +114,6 @@ public class frmTrangChu extends javax.swing.JFrame {
         });
         jToolBar1.add(btnNguyenLieu);
 
-        btnThanhToan.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\ThanhToan-30.png")); // NOI18N
         btnThanhToan.setText("THANH TOÁN");
         btnThanhToan.setFocusable(false);
         btnThanhToan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -127,7 +126,6 @@ public class frmTrangChu extends javax.swing.JFrame {
         });
         jToolBar1.add(btnThanhToan);
 
-        btnNhanVien.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\nhanvien-30.png")); // NOI18N
         btnNhanVien.setText("NHÂN VIÊN");
         btnNhanVien.setFocusable(false);
         btnNhanVien.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -140,7 +138,6 @@ public class frmTrangChu extends javax.swing.JFrame {
         });
         jToolBar1.add(btnNhanVien);
 
-        btnThongKe.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\ThongKe-30.png")); // NOI18N
         btnThongKe.setText("THỐNG KÊ");
         btnThongKe.setFocusable(false);
         btnThongKe.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -153,7 +150,6 @@ public class frmTrangChu extends javax.swing.JFrame {
         });
         jToolBar1.add(btnThongKe);
 
-        btnQuanLy.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\QL-30.png")); // NOI18N
         btnQuanLy.setText("QUẢN LÝ");
         btnQuanLy.setFocusable(false);
         btnQuanLy.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -166,7 +162,6 @@ public class frmTrangChu extends javax.swing.JFrame {
         });
         jToolBar1.add(btnQuanLy);
 
-        btnDangXuat.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\logout-30.png")); // NOI18N
         btnDangXuat.setText("ĐĂNG XUẤT");
         btnDangXuat.setFocusable(false);
         btnDangXuat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -186,7 +181,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         );
         DKPanelLayout.setVerticalGroup(
             DKPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 344, Short.MAX_VALUE)
+            .addGap(0, 32360, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -207,25 +202,28 @@ public class frmTrangChu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
-        // TODO add your handling code here:
-        nhanvien = new JINhanVien();
+    public void InitChildForm(JInternalFrame nguyenlieu){
         check = 0 ;
         for(JInternalFrame frmChild:DKPanel.getAllFrames()){
 
-            if(frmChild.getTitle().equals(nhanvien.getTitle()))
+            if(frmChild.getTitle().equals(nguyenlieu.getTitle()))
             {
                 check = 1;
             }        
         } 
         if(check == 0)
         {
-            DKPanel.add(nhanvien);
-            nhanvien.setVisible(true);
+            DKPanel.add(nguyenlieu);
+            nguyenlieu.setVisible(true);
         }
         else{
             JOptionPane.showConfirmDialog(this,"Đã có form hiện hành!!","Thông báo",JOptionPane.YES_OPTION);
-        }
+        }        
+    }
+
+    private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
+        // TODO add your handling code here:
+        InitChildForm(new JINhanVien());
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
     private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
@@ -234,46 +232,36 @@ public class frmTrangChu extends javax.swing.JFrame {
         int dialogResult = JOptionPane.showConfirmDialog (this, "Bạn có muốn đăng xuất","Thông báo",dialogButton);
         if(dialogResult == JOptionPane.YES_OPTION)
         {
-            this.setVisible(false);
+            this.dispose();
             new frmDangNhap().setVisible(true);
         }
     }//GEN-LAST:event_btnDangXuatActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
+
         int dialogButton = JOptionPane.YES_NO_OPTION;
         int dialogResult = JOptionPane.showConfirmDialog (this, "Bạn có muốn đăng xuất","Thông báo",dialogButton);
         if(dialogResult == JOptionPane.YES_OPTION)
         {
-            this.setVisible(false);
+            this.dispose();
             new frmDangNhap().setVisible(true);
         }
     }//GEN-LAST:event_formWindowClosing
 
     private void btnQuanLyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuanLyActionPerformed
         // TODO add your handling code here:
-        quanly = new JIQuanLy();
-        check = 0 ;
-        for(JInternalFrame frmChild:DKPanel.getAllFrames()){
-
-            if(frmChild.getTitle().equals(quanly.getTitle()))
-            {
-                check = 1;
-            }        
-        } 
-        if(check == 0)
-        {
-            DKPanel.add(quanly);
-            quanly.setVisible(true);
-        }
-        else{
-            JOptionPane.showConfirmDialog(this,"Đã có form hiện hành!!","Thông báo",JOptionPane.YES_OPTION);
-        }
+        InitChildForm(new JIQuanLy());
     }//GEN-LAST:event_btnQuanLyActionPerformed
 
     private void btnSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSanPhamActionPerformed
-        // TODO add your handling code here:
-        sanpham = new JISanPham();
+<<<<<<< HEAD
+        try {
+            // TODO add your handling code here:
+            sanpham = new JISanPham();
+        } catch (SQLException ex) {
+            Logger.getLogger(frmTrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         check = 0 ;
         for(JInternalFrame frmChild:DKPanel.getAllFrames()){
 
@@ -290,76 +278,36 @@ public class frmTrangChu extends javax.swing.JFrame {
         else{
             JOptionPane.showConfirmDialog(this,"Đã có form hiện hành!!","Thông báo",JOptionPane.YES_OPTION);
         }
+=======
+        // TODO add your handling code here:
+        InitChildForm(new JISanPham());
+>>>>>>> 3b1f48ec570e3257a5595d31bc02b054f3a2d08f
     }//GEN-LAST:event_btnSanPhamActionPerformed
 
+    
     private void btnNguyenLieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNguyenLieuActionPerformed
         // TODO add your handling code here:
-        nguyenlieu = new JINguyenLieu();
-        check = 0 ;
-        for(JInternalFrame frmChild:DKPanel.getAllFrames()){
+        InitChildForm(new JINguyenLieu());
 
-            if(frmChild.getTitle().equals(nguyenlieu.getTitle()))
-            {
-                check = 1;
-            }        
-        } 
-        if(check == 0)
-        {
-            DKPanel.add(nguyenlieu);
-            nguyenlieu.setVisible(true);
-        }
-        else{
-            JOptionPane.showConfirmDialog(this,"Đã có form hiện hành!!","Thông báo",JOptionPane.YES_OPTION);
-        }
     }//GEN-LAST:event_btnNguyenLieuActionPerformed
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
         // TODO add your handling code here:
-        thanhtoan = new JIThanhToan();
-        check = 0 ;
-        for(JInternalFrame frmChild:DKPanel.getAllFrames()){
-
-            if(frmChild.getTitle().equals(thanhtoan.getTitle()))
-            {
-                check = 1;
-            }        
-        } 
-        if(check == 0)
-        {
-            DKPanel.add(thanhtoan);
-            thanhtoan.setVisible(true);
-        }
-        else{
-            JOptionPane.showConfirmDialog(this,"Đã có form hiện hành!!","Thông báo",JOptionPane.YES_OPTION);
-        }
+        InitChildForm(new JIThanhToan());
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
         // TODO add your handling code here:
-        thongke = new JIThongKe();
-        check = 0 ;
-        for(JInternalFrame frmChild:DKPanel.getAllFrames()){
-
-            if(frmChild.getTitle().equals(thongke.getTitle()))
-            {
-                check = 1;
-            }        
-        } 
-        if(check == 0)
-        {
-            DKPanel.add(thongke);
-            thongke.setVisible(true);
-        }
-        else{
-            JOptionPane.showConfirmDialog(this,"Đã có form hiện hành!!","Thông báo",JOptionPane.YES_OPTION);
-        }
+        InitChildForm(new JIThongKe());
     }//GEN-LAST:event_btnThongKeActionPerformed
 
     /**
      * @param args the command line arguments
      */
+    static database db ;
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
+        db = new database();
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -381,7 +329,6 @@ public class frmTrangChu extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(frmTrangChu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
