@@ -5,13 +5,13 @@
  */
 package ql_banhngot;
 
-<<<<<<< HEAD
+
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-=======
+
 import Model.database;
->>>>>>> 3b1f48ec570e3257a5595d31bc02b054f3a2d08f
+
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
@@ -22,7 +22,12 @@ import javax.swing.JOptionPane;
 public class frmTrangChu extends javax.swing.JFrame {
 
     private int check ;
-            
+    private JINhanVien nhanvien;
+    private JINguyenLieu nguyenlieu;
+    private JIQuanLy quanly;
+    private JISanPham sanpham;
+    private JIThanhToan thanhtoan;
+    private JIThongKe thongke;
     /**
      * Creates new form frmTrangChu
      */
@@ -255,7 +260,7 @@ public class frmTrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnQuanLyActionPerformed
 
     private void btnSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSanPhamActionPerformed
-<<<<<<< HEAD
+
         try {
             // TODO add your handling code here:
             sanpham = new JISanPham();
@@ -278,10 +283,14 @@ public class frmTrangChu extends javax.swing.JFrame {
         else{
             JOptionPane.showConfirmDialog(this,"Đã có form hiện hành!!","Thông báo",JOptionPane.YES_OPTION);
         }
-=======
-        // TODO add your handling code here:
-        InitChildForm(new JISanPham());
->>>>>>> 3b1f48ec570e3257a5595d31bc02b054f3a2d08f
+
+        try {
+            // TODO add your handling code here:
+            InitChildForm(new JISanPham());
+        } catch (SQLException ex) {
+            Logger.getLogger(frmTrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_btnSanPhamActionPerformed
 
     
