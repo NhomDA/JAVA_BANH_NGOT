@@ -5,7 +5,13 @@
  */
 package ql_banhngot;
 
+
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import Model.database;
+
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
@@ -16,7 +22,12 @@ import javax.swing.JOptionPane;
 public class frmTrangChu extends javax.swing.JFrame {
 
     private int check ;
-            
+    private JINhanVien nhanvien;
+    private JINguyenLieu nguyenlieu;
+    private JIQuanLy quanly;
+    private JISanPham sanpham;
+    private JIThanhToan thanhtoan;
+    private JIThongKe thongke;
     /**
      * Creates new form frmTrangChu
      */
@@ -75,6 +86,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("BÁNH NGỌT");
         setForeground(new java.awt.Color(102, 255, 255));
+        setSize(getMaximumSize());
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -83,7 +95,6 @@ public class frmTrangChu extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
-        btnSanPham.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\sanpham1-30.png")); // NOI18N
         btnSanPham.setText("SẢN PHẨM");
         btnSanPham.setFocusable(false);
         btnSanPham.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -96,7 +107,6 @@ public class frmTrangChu extends javax.swing.JFrame {
         });
         jToolBar1.add(btnSanPham);
 
-        btnNguyenLieu.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\Nguyenlieu-30.png")); // NOI18N
         btnNguyenLieu.setText("NGUYÊN LIỆU");
         btnNguyenLieu.setFocusable(false);
         btnNguyenLieu.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -109,7 +119,6 @@ public class frmTrangChu extends javax.swing.JFrame {
         });
         jToolBar1.add(btnNguyenLieu);
 
-        btnThanhToan.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\ThanhToan-30.png")); // NOI18N
         btnThanhToan.setText("THANH TOÁN");
         btnThanhToan.setFocusable(false);
         btnThanhToan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -122,7 +131,6 @@ public class frmTrangChu extends javax.swing.JFrame {
         });
         jToolBar1.add(btnThanhToan);
 
-        btnNhanVien.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\nhanvien-30.png")); // NOI18N
         btnNhanVien.setText("NHÂN VIÊN");
         btnNhanVien.setFocusable(false);
         btnNhanVien.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -135,7 +143,6 @@ public class frmTrangChu extends javax.swing.JFrame {
         });
         jToolBar1.add(btnNhanVien);
 
-        btnThongKe.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\ThongKe-30.png")); // NOI18N
         btnThongKe.setText("THỐNG KÊ");
         btnThongKe.setFocusable(false);
         btnThongKe.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -148,7 +155,6 @@ public class frmTrangChu extends javax.swing.JFrame {
         });
         jToolBar1.add(btnThongKe);
 
-        btnQuanLy.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\QL-30.png")); // NOI18N
         btnQuanLy.setText("QUẢN LÝ");
         btnQuanLy.setFocusable(false);
         btnQuanLy.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -161,7 +167,6 @@ public class frmTrangChu extends javax.swing.JFrame {
         });
         jToolBar1.add(btnQuanLy);
 
-        btnDangXuat.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\logout-30.png")); // NOI18N
         btnDangXuat.setText("ĐĂNG XUẤT");
         btnDangXuat.setFocusable(false);
         btnDangXuat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -181,7 +186,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         );
         DKPanelLayout.setVerticalGroup(
             DKPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 344, Short.MAX_VALUE)
+            .addGap(0, 32360, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -259,8 +264,37 @@ public class frmTrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnQuanLyActionPerformed
 
     private void btnSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSanPhamActionPerformed
-        // TODO add your handling code here:
-        InitChildForm(new JISanPham());
+
+        try {
+            // TODO add your handling code here:
+            sanpham = new JISanPham();
+        } catch (SQLException ex) {
+            Logger.getLogger(frmTrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        check = 0 ;
+        for(JInternalFrame frmChild:DKPanel.getAllFrames()){
+
+            if(frmChild.getTitle().equals(sanpham.getTitle()))
+            {
+                check = 1;
+            }        
+        } 
+        if(check == 0)
+        {
+            DKPanel.add(sanpham);
+            sanpham.setVisible(true);
+        }
+        else{
+            JOptionPane.showConfirmDialog(this,"Đã có form hiện hành!!","Thông báo",JOptionPane.YES_OPTION);
+        }
+
+        try {
+            // TODO add your handling code here:
+            InitChildForm(new JISanPham());
+        } catch (SQLException ex) {
+            Logger.getLogger(frmTrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_btnSanPhamActionPerformed
 
     

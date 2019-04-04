@@ -247,7 +247,7 @@ public class frmDangNhap extends javax.swing.JFrame {
             }
             if(temp == 1)
             {
-                JOptionPane.showConfirmDialog(this,"Đăng nhập thành công!!","Thông báo",JOptionPane.OK_OPTION);            
+                JOptionPane.showMessageDialog(this,"Đăng nhập thành công!!","Thông báo",JOptionPane.INFORMATION_MESSAGE);            
                 this.setVisible(false);
                 new frmTrangChu().setVisible(true);
             }
