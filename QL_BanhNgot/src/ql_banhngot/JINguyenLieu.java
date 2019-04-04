@@ -5,6 +5,31 @@
  */
 package ql_banhngot;
 
+import Model.database;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import static javax.swing.JOptionPane.OK_OPTION;
+import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import static ql_banhngot.frmTrangChu.db;
+
 /**
  *
  * @author ASUS
@@ -14,8 +39,46 @@ public class JINguyenLieu extends javax.swing.JInternalFrame {
     /**
      * Creates new form JINguyenLieu
      */
+    static DefaultTableModel model;
+
+    public void Init(){
+        Object[][] rowData = {};
+        Object[] columnNames = new String [] {
+                "Mã NL","Tên nguyên liệu", "Giá", "Nhà cung cấp", "Hạn sử dụng"
+            };
+        model = new DefaultTableModel(rowData, columnNames);
+        tableNL.setModel(model);
+        
+        ResultSet res = db.ExcuteQueryGetTable("select * from NguyenLieu");
+        try {
+            while (res.next()) {
+                model.addRow(new Object[] { res.getString("MaNL"), res.getString("TenNL"), res.getString("Gia"), res.getString("NhaCC"),res.getString("HanSD") });
+            }            
+        } catch (Exception e) {
+        }        
+        
+    }
+    
+    public void search(String name){
+        Object[][] rowData = {};
+        Object[] columnNames = new String [] {
+                "Mã NL","Tên nguyên liệu", "Giá", "Nhà cung cấp", "Hạn sử dụng"
+            };
+        model = new DefaultTableModel(rowData, columnNames);
+        tableNL.setModel(model);
+        
+        ResultSet res = db.ExcuteQueryGetTable("select * from NguyenLieu where TenNL like '"+name+"%'");
+        try {
+            while (res.next()) {
+                model.addRow(new Object[] { res.getString("MaNL"), res.getString("TenNL"), res.getString("Gia"), res.getString("NhaCC"),res.getString("HanSD") });
+            }            
+        } catch (Exception e) {
+        }                
+    }
+
     public JINguyenLieu() {
         initComponents();
+        Init();
     }
 
     /**
@@ -27,23 +90,449 @@ public class JINguyenLieu extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        txtTiemKiem = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableNL = new javax.swing.JTable();
+
         setTitle("NGUYÊN LIỆU");
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("QUẢN LÝ NGUYÊN LIỆU");
+
+        jLabel2.setText("Nhập tên nguyên liệu: ");
+
+        txtTiemKiem.setName(""); // NOI18N
+
+        jButton1.setText("Tìm kiếm");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        jButton6.setText("()");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtTiemKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtTiemKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton6))
+                .addContainerGap())
+        );
+
+        jButton2.setText("Sửa");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
+        jButton3.setText("Xóa");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+
+        jButton4.setText("Thêm");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+
+        jButton5.setText("Thoát");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton4)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton5)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4)
+                    .addComponent(jButton5))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        tableNL.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Tên nguyên liệu", "Giá", "Nhà cung cấp", "Hạn sử dụng"
+            }
+        ));
+        tableNL.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                tableNLComponentShown(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tableNL);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(211, 211, 211))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        while(model.getRowCount()>0){
+            model.removeRow(0);
+        }
+        search(txtTiemKiem.getText());
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        Init();
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        if(tableNL.getSelectedRow()==-1||((int[])tableNL.getSelectedRows()).length>1){
+            showMessageDialog(null, "Bạn chưa chọn hoặc đã chọn nhiều dòng !", "Thông báo", ERROR_MESSAGE);
+        }else{
+            int i= tableNL.getSelectedRow();
+            JTextField TenNL = new JTextField((String)tableNL.getValueAt(i, 1));
+            JTextField Gia = new JTextField((String)tableNL.getValueAt(i, 2));
+            JTextField NhaCC = new JTextField((String)tableNL.getValueAt(i, 3));
+            JTextField txtMaNL = new JTextField((String)tableNL.getValueAt(i, 0));
+            txtMaNL.setEnabled(false);
+
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            JFormattedTextField HanSD = new JFormattedTextField(df);
+            HanSD.setText((String)tableNL.getValueAt(i, 4));
+            HanSD.addKeyListener(new KeyAdapter() {
+                public void keyTyped(KeyEvent e) {
+                    char c = e.getKeyChar();
+                    if (!((c >= '0') && (c <= '9') ||
+                        (c == KeyEvent.VK_BACK_SPACE) ||
+                        (c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_SLASH)))
+                {
+                    JOptionPane.showMessageDialog(null, "Vui lòng nhập ngày / tháng / năm !");
+                    e.consume();
+                }
+            }
+        });
+        Gia.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!((c >= '0') && (c <= '9') ||
+                    (c == KeyEvent.VK_BACK_SPACE) ||
+                    (c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_SLASH)))
+            {
+                JOptionPane.showMessageDialog(null, "Vui lòng nhập số !");
+                e.consume();
+            }
+        }
+        });
+
+        JPanel panel = new JPanel(new GridLayout(0, 1));
+        //        panel.add(combo);
+        panel.add(new JLabel("Mã"));
+        panel.add(txtMaNL);
+        panel.add(new JLabel("Tên nguyên liệu"));
+        panel.add(TenNL);
+        panel.add(new JLabel("Giá"));
+        panel.add(Gia);
+        panel.add(new JLabel("Nhà cung cấp"));
+        panel.add(NhaCC);
+        panel.add(new JLabel("hạn sử dụng"));
+        panel.add(HanSD);
+        int result = JOptionPane.showConfirmDialog(null, panel, "Sửa nguyên liệu",
+            JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+        if (result == JOptionPane.OK_OPTION) {
+            String sql = "update NguyenLieu set Gia = "+Gia.getText()+" , NhaCC="+NhaCC.getText()+",HanSD = '"+HanSD.getText()+"', TenNL='"+TenNL.getText()+"' where MaNL = "+txtMaNL.getText();
+            db.ExcuteQueryUpdateDB(sql);
+            model.setValueAt(TenNL.getText(), i, 1);
+            model.setValueAt(Gia.getText(), i, 2);
+            model.setValueAt(NhaCC.getText(), i, 3);
+            model.setValueAt(HanSD.getText(), i, 4);
+        } else {
+            System.out.println("Cancelled");
+        }
+
+        }
+
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        if(tableNL.getSelectedRow()==-1){
+            showMessageDialog(null, "Vui lòng chọn dòng muốn xóa!", "Thông báo", ERROR_MESSAGE);
+        }else{
+            JPanel panel = new JPanel(new GridLayout(0, 1));
+            panel.add(new JLabel("Bạn có muốn xóa không ?"));
+            int result = JOptionPane.showConfirmDialog(null, panel, "Thông báo",
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+            if (result == JOptionPane.OK_OPTION) {
+                int[] ob = tableNL.getSelectedRows();
+                for(int i=ob.length-1;i>=0;i--){
+                    String sql ="delete NguyenLieu where MaNL = "+ (String)tableNL.getValueAt(ob[i], 0);
+                    db.ExcuteQueryUpdateDB(sql);
+                    model.removeRow(ob[i]);
+                }
+            } else {
+                System.out.println("Cancelled");
+            }
+        }
+
+    }//GEN-LAST:event_jButton3MouseClicked
+    private static void AddNL() {
+//        String[] items = {"One", "Two", "Three", "Four", "Five"};
+//        JComboBox<String> combo = new JComboBox<>(items);
+        JTextField txtTenNL = new JTextField("");
+        JTextField txtGia = new JTextField("");
+        JTextField txtNhaCC = new JTextField("");
+        JButton btnOk = new JButton();
+        JButton btnCancel = new JButton();
+        btnOk.setText("Đồng ý");
+        btnCancel.setText("Hủy");
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        JFormattedTextField txtHanSD = new JFormattedTextField(df);
+        JFrame frm = new JFrame();
+
+        txtHanSD.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+              char c = e.getKeyChar();
+              if (!((c >= '0') && (c <= '9') ||
+                 (c == KeyEvent.VK_BACK_SPACE) ||
+                 (c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_SLASH)))        
+              {
+                JOptionPane.showMessageDialog(null, "Vui lòng nhập ngày / tháng / năm !");
+                e.consume();
+              }
+            }
+        });
+        txtGia.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+              char c = e.getKeyChar();
+              if (!((c >= '0') && (c <= '9') ||
+                 (c == KeyEvent.VK_BACK_SPACE) ||
+                 (c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_SLASH)))        
+              {
+                JOptionPane.showMessageDialog(null, "Vui lòng nhập số !");
+                e.consume();
+              }
+            }
+        });
+        // click Dong y
+        btnOk.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(txtTenNL.getText().equals("") || txtGia.getText().equals("") || txtHanSD.getText().equals("") || txtNhaCC.getText().equals("")){
+                    JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ !", "Thông báo", OK_OPTION);
+                }else{
+                    String sql = "insert into NguyenLieu values ('"+txtTenNL.getText()+"','"+txtGia.getText()+"','"+txtNhaCC.getText()+"','"+txtHanSD.getText()+"')";
+                    db.ExcuteQueryUpdateDB(sql);
+                    ResultSet res = db.ExcuteQueryGetTable("select top(1) * from nguyenlieu ORDER BY NguyenLieu.MaNL DESC ");
+                    try {
+                        while (res.next()) {
+                            model.addRow(new Object[] { res.getString("MaNL"), res.getString("TenNL"), res.getString("Gia"), res.getString("NhaCC"),res.getString("HanSD") });
+                        }            
+                    } catch (SQLException ex) {
+                    }
+                    
+//                    jfr.setVisible(true);
+//                    jfr.setEnabled(true);
+                    frm.setVisible(false);                
+                }
+            }
+        });
+        //click hut
+        btnCancel.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+//                jfr.setVisible(true);
+//                jfr.setEnabled(true);
+                frm.setVisible(false);                
+            }
+        });
+        JPanel panel = new JPanel(new GridLayout(0, 1));
+        panel.setSize(350, 350);
+        panel.add(new JLabel("Tên nguyên liệu"));
+        panel.add(txtTenNL);
+        panel.add(new JLabel("Giá"));
+        panel.add(txtGia);
+        panel.add(new JLabel("Nhà cung cấp"));
+        panel.add(txtNhaCC);
+        panel.add(new JLabel("hạn sử dụng"));
+        panel.add(txtHanSD);
+        panel.add(btnOk );
+        panel.add(btnCancel);
+        
+        
+        frm.add(panel);
+        frm.setSize(400, 400);
+        frm.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+//                jfr.setVisible(true);
+//                jfr.setEnabled(true);
+                frm.setVisible(false);
+            }
+        });
+        frm.setVisible(true);
+//        jfr.setEnabled(false);
+        
+        int result=-21;
+//        result = JOptionPane.showConfirmDialog(null, panel, "Thêm nguyên liệu",JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+        if (result == JOptionPane.OK_OPTION) {
+            String sql = "insert into NguyenLieu values ('"+txtTenNL.getText()+"','"+txtGia.getText()+"','"+txtNhaCC.getText()+"','"+txtHanSD.getText()+"')";
+            db.ExcuteQueryUpdateDB(sql);
+            ResultSet res = db.ExcuteQueryGetTable("select top(1) * from nguyenlieu ORDER BY NguyenLieu.MaNL DESC ");
+            try {
+                while (res.next()) {
+                    model.addRow(new Object[] { res.getString("MaNL"), res.getString("TenNL"), res.getString("Gia"), res.getString("NhaCC"),res.getString("HanSD") });
+                }            
+            } catch (Exception e) {
+            }        
+            
+        } else {
+            System.out.println("Cancelled");
+        }
+    }
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        AddNL();
+
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+//        jfr.setVisible(false);
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void tableNLComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_tableNLComponentShown
+        // TODO add your handling code here:
+        System.err.println("hello");
+    }//GEN-LAST:event_tableNLComponentShown
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tableNL;
+    private javax.swing.JTextField txtTiemKiem;
     // End of variables declaration//GEN-END:variables
 }
