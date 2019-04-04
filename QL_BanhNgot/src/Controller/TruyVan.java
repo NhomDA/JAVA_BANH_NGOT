@@ -50,4 +50,23 @@ public class TruyVan {
         String sql = "delete from DangNhap where TK='"+TK+"'";
         db.ExcuteQueryUpdateDB(sql);	
     }
+    public ResultSet listThongKe()
+    {
+        String sql = "select a.MaHD, c.TenSP, b.SL, b.DonGia, a.NgayLap from HoaDon a, ChiTietHoaDon b, SanPham c where a.MaHD = b.MaHD AND b.MaSP = c.MaSP";
+        return db.ExcuteQueryGetTable(sql);
+    }
+    public ResultSet Sanpham()
+    {
+        String sql = "select MaSP, TenSP from SanPham";
+        return db.ExcuteQueryGetTable(sql);
+    }
+    public void XoaCTHD(String maHD, int maSP) {	
+        String sql = "delete from ChiTietHoaDon where MaHD="+maHD+" AND MaSP="+maSP+"";
+        db.ExcuteQueryUpdateDB(sql);	
+    }
+    public ResultSet listThongKe(String ngay)
+    {
+        String sql = "select a.MaHD, c.TenSP, b.SL, b.DonGia, a.NgayLap from HoaDon a, ChiTietHoaDon b, SanPham c where a.MaHD = b.MaHD AND b.MaSP = c.MaSP AND a.NgayLap like "+ngay+"%";
+        return db.ExcuteQueryGetTable(sql);
+    }
 }

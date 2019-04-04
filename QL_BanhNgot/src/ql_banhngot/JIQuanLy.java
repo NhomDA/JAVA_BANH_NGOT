@@ -132,11 +132,30 @@ public class JIQuanLy extends javax.swing.JInternalFrame {
         lb_namsinh = new javax.swing.JLabel();
         lb_timkiem = new javax.swing.JLabel();
         txtMatKhau = new javax.swing.JPasswordField();
-        cbQuyen = new javax.swing.JComboBox<String>();
+        cbQuyen = new javax.swing.JComboBox<>();
         btnLoad = new javax.swing.JButton();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setMaximizable(true);
         setTitle("QUẢN LÝ");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         tbTaiKhoan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -229,7 +248,7 @@ public class JIQuanLy extends javax.swing.JInternalFrame {
 
         lb_timkiem.setText("Tìm kiếm");
 
-        cbQuyen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Chọn", "Item 2", "Item 3", "Item 4" }));
+        cbQuyen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn", "Item 2", "Item 3", "Item 4" }));
 
         btnLoad.setText("Load");
         btnLoad.addActionListener(new java.awt.event.ActionListener() {
@@ -243,7 +262,7 @@ public class JIQuanLy extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lb_sdt)
                     .addComponent(lb_hoten)
@@ -252,7 +271,7 @@ public class JIQuanLy extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(288, Short.MAX_VALUE))
+                        .addContainerGap(290, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -417,6 +436,23 @@ public class JIQuanLy extends javax.swing.JInternalFrame {
         LoadTK(txtTimKiem.getText());
         
     }//GEN-LAST:event_btnTimActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        if(!txtTaikhoan.getText().equals("")||txtMatKhau.getPassword().length != 0)
+        {
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog (this, "Bạn có chắc muốn thoát khi vẫn có dữ liệu đang được nhập","Thông báo",dialogButton);
+            if(dialogResult == JOptionPane.YES_OPTION)
+            {
+                this.dispose();
+            }
+        }
+        else
+        {
+            this.dispose();
+        }
+    }//GEN-LAST:event_formInternalFrameClosing
 
     public int kttk()
     {
