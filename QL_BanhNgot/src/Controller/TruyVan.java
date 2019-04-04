@@ -66,7 +66,7 @@ public class TruyVan {
     }
     public ResultSet listThongKe(String ngay)
     {
-        String sql = "select a.MaHD, c.TenSP, b.SL, b.DonGia, a.NgayLap from HoaDon a, ChiTietHoaDon b, SanPham c where a.MaHD = b.MaHD AND b.MaSP = c.MaSP AND a.NgayLap like "+ngay+"%";
+        String sql = "select a.MaHD, c.TenSP, b.SL, b.DonGia, a.NgayLap from HoaDon a, ChiTietHoaDon b, SanPham c where a.MaHD = b.MaHD AND b.MaSP = c.MaSP AND a.NgayLap like '%"+ngay+"%'";
         return db.ExcuteQueryGetTable(sql);
     }
 }
