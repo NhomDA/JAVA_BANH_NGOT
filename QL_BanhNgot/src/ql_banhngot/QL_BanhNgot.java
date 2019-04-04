@@ -45,11 +45,6 @@ public class QL_BanhNgot {
                 
             }
         });
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmDangNhap().setVisible(true);
-            }
-        });
         
     }
     

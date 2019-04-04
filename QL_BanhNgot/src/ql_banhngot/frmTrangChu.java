@@ -22,12 +22,6 @@ import javax.swing.JOptionPane;
 public class frmTrangChu extends javax.swing.JFrame {
 
     private int check ;
-    private JINhanVien nhanvien;
-    private JINguyenLieu nguyenlieu;
-    private JIQuanLy quanly;
-    private JISanPham sanpham;
-    private JIThanhToan thanhtoan;
-    private JIThongKe thongke;
     /**
      * Creates new form frmTrangChu
      */
@@ -80,13 +74,13 @@ public class frmTrangChu extends javax.swing.JFrame {
         btnNhanVien = new javax.swing.JButton();
         btnThongKe = new javax.swing.JButton();
         btnQuanLy = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         btnDangXuat = new javax.swing.JButton();
         DKPanel = new javax.swing.JDesktopPane();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("BÁNH NGỌT");
         setForeground(new java.awt.Color(102, 255, 255));
-        setSize(getMaximumSize());
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -167,6 +161,17 @@ public class frmTrangChu extends javax.swing.JFrame {
         });
         jToolBar1.add(btnQuanLy);
 
+        jButton1.setText("ĐÓNG TẤT CẢ FORM");
+        jButton1.setFocusable(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jToolBar1.add(jButton1);
+
         btnDangXuat.setText("ĐĂNG XUẤT");
         btnDangXuat.setFocusable(false);
         btnDangXuat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -186,7 +191,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         );
         DKPanelLayout.setVerticalGroup(
             DKPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 32360, Short.MAX_VALUE)
+            .addGap(0, 344, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -264,32 +269,7 @@ public class frmTrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnQuanLyActionPerformed
 
     private void btnSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSanPhamActionPerformed
-
         try {
-            // TODO add your handling code here:
-            sanpham = new JISanPham();
-        } catch (SQLException ex) {
-            Logger.getLogger(frmTrangChu.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        check = 0 ;
-        for(JInternalFrame frmChild:DKPanel.getAllFrames()){
-
-            if(frmChild.getTitle().equals(sanpham.getTitle()))
-            {
-                check = 1;
-            }        
-        } 
-        if(check == 0)
-        {
-            DKPanel.add(sanpham);
-            sanpham.setVisible(true);
-        }
-        else{
-            JOptionPane.showConfirmDialog(this,"Đã có form hiện hành!!","Thông báo",JOptionPane.YES_OPTION);
-        }
-
-        try {
-            // TODO add your handling code here:
             InitChildForm(new JISanPham());
         } catch (SQLException ex) {
             Logger.getLogger(frmTrangChu.class.getName()).log(Level.SEVERE, null, ex);
@@ -313,6 +293,13 @@ public class frmTrangChu extends javax.swing.JFrame {
         // TODO add your handling code here:
         InitChildForm(new JIThongKe());
     }//GEN-LAST:event_btnThongKeActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        for(JInternalFrame frmChild:DKPanel.getAllFrames()){
+            frmChild.dispose();
+        }         
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -360,6 +347,7 @@ public class frmTrangChu extends javax.swing.JFrame {
     private javax.swing.JButton btnSanPham;
     private javax.swing.JButton btnThanhToan;
     private javax.swing.JButton btnThongKe;
+    private javax.swing.JButton jButton1;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }

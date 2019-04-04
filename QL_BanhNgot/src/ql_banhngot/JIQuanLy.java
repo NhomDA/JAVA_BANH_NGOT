@@ -132,10 +132,10 @@ public class JIQuanLy extends javax.swing.JInternalFrame {
         lb_namsinh = new javax.swing.JLabel();
         lb_timkiem = new javax.swing.JLabel();
         txtMatKhau = new javax.swing.JPasswordField();
-        cbQuyen = new javax.swing.JComboBox<>();
+        cbQuyen = new javax.swing.JComboBox<String>();
         btnLoad = new javax.swing.JButton();
-        btnThoat = new javax.swing.JButton();
 
+        setClosable(true);
         setTitle("QUẢN LÝ");
 
         tbTaiKhoan.setModel(new javax.swing.table.DefaultTableModel(
@@ -168,7 +168,7 @@ public class JIQuanLy extends javax.swing.JInternalFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -229,19 +229,12 @@ public class JIQuanLy extends javax.swing.JInternalFrame {
 
         lb_timkiem.setText("Tìm kiếm");
 
-        cbQuyen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn", "Item 2", "Item 3", "Item 4" }));
+        cbQuyen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Chọn", "Item 2", "Item 3", "Item 4" }));
 
         btnLoad.setText("Load");
         btnLoad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoadActionPerformed(evt);
-            }
-        });
-
-        btnThoat.setText("Thoát");
-        btnThoat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThoatActionPerformed(evt);
             }
         });
 
@@ -264,8 +257,7 @@ public class JIQuanLy extends javax.swing.JInternalFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(txtTaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnThoat))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -289,11 +281,10 @@ public class JIQuanLy extends javax.swing.JInternalFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb_hoten)
-                    .addComponent(txtTaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnThoat))
+                    .addComponent(txtTaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb_sdt)
@@ -427,16 +418,6 @@ public class JIQuanLy extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnTimActionPerformed
 
-    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
-        // TODO add your handling code here:
-        int dialogButton = JOptionPane.YES_NO_OPTION;
-        int dialogResult = JOptionPane.showConfirmDialog (this, "Bạn có muốn thoát","Thông báo",dialogButton);
-        if(dialogResult == JOptionPane.YES_OPTION)
-        {
-            this.dispose();
-        }
-    }//GEN-LAST:event_btnThoatActionPerformed
-
     public int kttk()
     {
         rs = sql.ListTaiKhoan();
@@ -473,7 +454,6 @@ public class JIQuanLy extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnLoad;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
-    private javax.swing.JButton btnThoat;
     private javax.swing.JButton btnTim;
     private javax.swing.JButton btnXoa;
     private javax.swing.JComboBox<String> cbQuyen;
