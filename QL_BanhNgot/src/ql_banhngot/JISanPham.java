@@ -409,6 +409,7 @@ public class JISanPham extends javax.swing.JInternalFrame {
                     ClearData();
                     ShowData();
                     setNull();
+                    JOptionPane.showMessageDialog(null,"Xóa thành công","Thông báo",1);
                 }
             }
         }
@@ -435,20 +436,27 @@ public class JISanPham extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         String ma=txtMaSP.getText();
         String ten = txtTenSP.getText();
-        int gia = Integer.parseInt(txtGia.getText());
+        int gia = 0;
+        try{
+            gia = Integer.parseInt(txtGia.getText());
+        } catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null,"Vui lòng nhập số vào ô 'giá'","Lỗi", 1);
+        }
         String TenLoai=txtTenLoai.getText();
         String loai = cboxMaLoai.getSelectedItem().toString();
-        if(ten.length() == 0){
+        if(ten.length() == 0|| gia==0){
             JOptionPane.showMessageDialog(null,"Vui lòng nhập đầy đủ thông tin","Thông báo", 1);
         }
         else{
                 try{
                     if(cothem){
                         sp.InsertSP(ten, gia, loai);
+                        JOptionPane.showMessageDialog(null,"Thêm mới sản phẩm thành công","Thông báo", 1);
                     }
                     else{
-                        sp.EditSP(ma, ten, gia, loai);
+                        sp.EditSanPham(ma, ten, gia, loai);
                         sp.EditLoaiSP(loai, TenLoai);
+                        JOptionPane.showMessageDialog(null,"Cập nhật sản phẩm thành công","Thông báo", 1);
                     }
                     ClearData();
                     ShowData();

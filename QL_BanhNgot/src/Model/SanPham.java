@@ -49,9 +49,9 @@ public class SanPham {
         cn.ExcuteQueryUpdateDB(sql);
     }
     
-    public void EditSP(String ma, String ten, int dg, String ml){
-        String sql = "UPDATE Sanpham SET TenSP = N'"+ten+"', Dongia="+dg+", Maloai = '"+ml+"' WHERE MaSP = '"+ma+"'";
-        cn.ExcuteQueryUpdateDB(sql);
+    public void EditSanPham(String ma, String ten, int dg, String ml){
+        String truyvan = "UPDATE SanPham SET TenSP = N'"+ten+"', gia="+dg+", Maloai = '"+ml+"' WHERE MaSP = '"+ma+"'";
+        cn.ExcuteQueryUpdateDB(truyvan);
     }
     public void EditLoaiSP(String MaLoai, String tenLoai){
         String sql = "UPDATE LoaiSP SET TenLoai = N'"+tenLoai+"' WHERE MaLoai = '"+MaLoai+"'";
@@ -59,7 +59,7 @@ public class SanPham {
     }
     
     public void DeleteSP(String ma) throws SQLException{
-        String sql = "DELETE FROM Sanpham WHERE MaSP = '"+ma+"'";
+        String sql = "DELETE FROM SanPham WHERE MaSP = '"+ma+"'";
         cn.ExcuteQueryUpdateDB(sql);
     }
     
