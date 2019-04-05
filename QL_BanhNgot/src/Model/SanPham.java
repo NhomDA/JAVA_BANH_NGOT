@@ -40,7 +40,7 @@ public class SanPham {
     }
     
     public ResultSet ShowSanPhamTheoTen(String ten) throws SQLException{
-        String sql = "SELECT MaSP, TenSP, gia, L.Maloai, Tenloai FROM Sanpham S, LoaiSP L WHERE L.Maloai = S.Maloai AND TenSP LIKE '%" + ten +"%'";
+        String sql = "SELECT MaSP, TenSP, gia, L.Maloai, Tenloai FROM Sanpham S, LoaiSP L WHERE L.Maloai = S.Maloai AND TenSP LIKE N'%" + ten +"%'";
         return cn.ExcuteQueryGetTable(sql);
     }
     

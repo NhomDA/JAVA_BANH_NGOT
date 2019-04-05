@@ -13,11 +13,12 @@ import javax.swing.JOptionPane;
  * @author ASUS
  */
 public class frmDangNhap extends javax.swing.JFrame {
+
     static int q;
     ResultSet rs = null;
     TruyVan sql;
     /**
-     * Creates new form frmDangNhap
+     * Creates new form sua
      */
     public frmDangNhap() {
         initComponents();
@@ -81,7 +82,7 @@ public class frmDangNhap extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addContainerGap())
         );
@@ -141,7 +142,7 @@ public class frmDangNhap extends javax.swing.JFrame {
                         .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtMK)
                     .addComponent(txtTK))
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +159,7 @@ public class frmDangNhap extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDangNhap)
                     .addComponent(btnThoat))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
@@ -166,7 +167,7 @@ public class frmDangNhap extends javax.swing.JFrame {
         panel2Layout.setHorizontalGroup(
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(39, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -211,7 +212,7 @@ public class frmDangNhap extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -223,31 +224,32 @@ public class frmDangNhap extends javax.swing.JFrame {
     }
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         // TODO add your handling code here:
-        rs = sql.taikhoan(txtTK.getText());
-        
+    
+
         if(txtTK.getText().equals("") || txtMK.getPassword().length == 0)
             JOptionPane.showConfirmDialog(this,"Vui lòng không để trống","Thông báo",JOptionPane.WARNING_MESSAGE);
         else
-        { 
+        {
+            rs = sql.taikhoan(txtTK.getText());
             int temp = 0;
             try{
                 while(rs.next())
                 {
                     if(String.copyValueOf(txtMK.getPassword()).equals(rs.getString("MK")))
                     {
-                        temp = 1;           
-                        q = rs.getInt("MaPQ");            
+                        temp = 1;
+                        q = rs.getInt("MaPQ");
                     }
-                    
+
                 }
-//                rs.close();
+                //                rs.close();
             }catch(SQLException ex)
             {
                 System.out.println(ex.toString());
             }
             if(temp == 1)
             {
-                JOptionPane.showMessageDialog(this,"Đăng nhập thành công!!","Thông báo",JOptionPane.INFORMATION_MESSAGE);            
+                JOptionPane.showMessageDialog(this,"Đăng nhập thành công!!","Thông báo",JOptionPane.INFORMATION_MESSAGE);
                 this.setVisible(false);
                 new frmTrangChu().setVisible(true);
             }
@@ -256,7 +258,7 @@ public class frmDangNhap extends javax.swing.JFrame {
                 JOptionPane.showConfirmDialog(this,"Tài khoản hoặc mật khẩu không đúng !!!!","Thông báo",JOptionPane.WARNING_MESSAGE);
             }
         }
-        
+
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
@@ -267,7 +269,7 @@ public class frmDangNhap extends javax.swing.JFrame {
         {
             System.exit(0);
         }
-        
+
     }//GEN-LAST:event_btnThoatActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -283,6 +285,38 @@ public class frmDangNhap extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(frmDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(frmDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(frmDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(frmDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new frmDangNhap().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangNhap;
