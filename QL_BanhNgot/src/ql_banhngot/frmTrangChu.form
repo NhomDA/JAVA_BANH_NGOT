@@ -54,9 +54,6 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="btnSanPham">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\ASUS\Desktop\DA_JAVA\JAVA_BANH_NGOT\QL_BanhNgot\images\sanpham1-30.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="S&#x1ea2;N PH&#x1ea8;M"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -71,9 +68,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnNguyenLieu">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\ASUS\Desktop\DA_JAVA\JAVA_BANH_NGOT\QL_BanhNgot\images\Nguyenlieu-30.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="NGUY&#xca;N LI&#x1ec6;U"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -88,9 +82,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnThanhToan">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\ASUS\Desktop\DA_JAVA\JAVA_BANH_NGOT\QL_BanhNgot\images\ThanhToan-30.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="THANH TO&#xc1;N"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -105,9 +96,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnNhanVien">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\ASUS\Desktop\DA_JAVA\JAVA_BANH_NGOT\QL_BanhNgot\images\nhanvien-30.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="NH&#xc2;N VI&#xca;N"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -122,9 +110,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnThongKe">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\ASUS\Desktop\DA_JAVA\JAVA_BANH_NGOT\QL_BanhNgot\images\ThongKe-30.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="TH&#x1ed0;NG K&#xca;"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -139,9 +124,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnQuanLy">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\ASUS\Desktop\DA_JAVA\JAVA_BANH_NGOT\QL_BanhNgot\images\QL-30.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="QU&#x1ea2;N L&#xdd;"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -156,9 +138,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\ASUS\Desktop\DA_JAVA\JAVA_BANH_NGOT\QL_BanhNgot\images\cancel-30.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="&#x110;&#xd3;NG T&#x1ea4;T C&#x1ea2; FORM"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -170,9 +149,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnDangXuat">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\ASUS\Desktop\DA_JAVA\JAVA_BANH_NGOT\QL_BanhNgot\images\logout-30.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="&#x110;&#x102;NG XU&#x1ea4;T"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>

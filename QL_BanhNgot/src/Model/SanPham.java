@@ -67,4 +67,34 @@ public class SanPham {
         String sql = "SELECT MaSP, TenSP, gia, L.Maloai, Tenloai FROM Sanpham S, LoaiSP L WHERE L.Maloai = S.Maloai AND gia >= " +giaTu +" AND gia <= " +giaDen;
         return cn.ExcuteQueryGetTable(sql);
     }
+    public ResultSet SanPhamTheoTen(String ten) throws SQLException{
+        String sql = "SELECT MaSP, TenSP, gia, L.Maloai, Tenloai FROM Sanpham S, LoaiSP L WHERE L.Maloai = S.Maloai AND TenSP ='" + ten +"'";
+        return cn.ExcuteQueryGetTable(sql);
+    }
+    public void ThemHD(String NgayLap){
+        String sql = "insert into HoaDon values ('"+ NgayLap +"')";
+        cn.ExcuteQueryUpdateDB(sql);	        
+    }
+    public ResultSet ShowSanPhamTheoTenVaLoai(String ten,String loai) throws SQLException{
+        if(loai.equals("Tất cả")){
+            loai="";
+        }
+        String sql = "SELECT MaSP, TenSP, gia, L.Maloai, Tenloai FROM Sanpham S, LoaiSP L WHERE L.Maloai = S.Maloai AND TenSP LIKE '%" + ten +"%' AND L.TenLoai LIKE '%" + loai +"%'";
+        return cn.ExcuteQueryGetTable(sql);
+    }
+    public int GetLastMHD() throws SQLException{
+        String sql = "select top(1) * from HoaDon ORDER BY HoaDon.MaHD DESC";
+        int i =-1;
+        ResultSet res = cn.ExcuteQueryGetTable(sql);
+        if(res.next()){
+            i = Integer.parseInt(res.getString("MaHD"));
+        }
+        return i;
+    }
+
+    public void ThemChiTietHD(String MaHD,String MaSP,int SL,long Gia){
+        String sql = "insert into ChiTietHoaDon values ('"+MaHD+"','"+MaSP+"',"+SL+","+Gia+")";
+        cn.ExcuteQueryUpdateDB(sql);	                
+    }
+    
 }

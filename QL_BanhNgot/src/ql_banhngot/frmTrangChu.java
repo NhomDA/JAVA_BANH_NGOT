@@ -293,8 +293,12 @@ public class frmTrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNguyenLieuActionPerformed
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
-        // TODO add your handling code here:
-        InitChildForm(new JIThanhToan());
+        try {
+            // TODO add your handling code here:
+            InitChildForm(new JIThanhToan());
+        } catch (SQLException ex) {
+            Logger.getLogger(frmTrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
