@@ -199,7 +199,7 @@ public class frmTrangChu extends javax.swing.JFrame {
         );
         DKPanelLayout.setVerticalGroup(
             DKPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 344, Short.MAX_VALUE)
+            .addGap(0, 323, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -214,7 +214,8 @@ public class frmTrangChu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DKPanel))
+                .addComponent(DKPanel)
+                .addGap(21, 21, 21))
         );
 
         pack();

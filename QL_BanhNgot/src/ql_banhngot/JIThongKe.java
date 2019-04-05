@@ -20,7 +20,7 @@ public class JIThongKe extends javax.swing.JInternalFrame {
 
     ResultSet rs = null;
     TruyVan sql;
-    private String t;
+
     int masp;
     /**
      * Creates new form JIThongKe
@@ -161,6 +161,7 @@ public class JIThongKe extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setMaximizable(true);
+        setResizable(true);
         setTitle("THỐNG KÊ");
 
         tittle.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
@@ -380,13 +381,13 @@ public class JIThongKe extends javax.swing.JInternalFrame {
     private void tbThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbThongKeMouseClicked
         // TODO add your handling code here:
         int row = tbThongKe.getSelectedRow();
-        txtMaHD.setText((String) tbThongKe.getValueAt(row, 1).toString());
-        t = (String) tbThongKe.getValueAt(row, 1).toString();
-        txtMaHD.setText((String) tbThongKe.getValueAt(row, 1).toString());
-        txtSP.setText((String) tbThongKe.getValueAt(row, 2).toString());
-        txtSL.setText((String) tbThongKe.getValueAt(row, 3).toString());
-        txtGia.setText((String) tbThongKe.getValueAt(row, 4).toString());
-        txtNgay.setText((String) tbThongKe.getValueAt(row, 5).toString());
+        txtMaHD.setText((String) tbThongKe.getValueAt(row, 0).toString());
+
+
+        txtSP.setText((String) tbThongKe.getValueAt(row, 1).toString());
+        txtSL.setText((String) tbThongKe.getValueAt(row, 2).toString());
+        txtGia.setText((String) tbThongKe.getValueAt(row, 3).toString());
+        txtNgay.setText((String) tbThongKe.getValueAt(row, 4).toString());
     }//GEN-LAST:event_tbThongKeMouseClicked
 
 
