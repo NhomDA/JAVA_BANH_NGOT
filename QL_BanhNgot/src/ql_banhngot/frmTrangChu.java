@@ -33,6 +33,7 @@ public class frmTrangChu extends javax.swing.JFrame {
 //        pnMain.removeAll();
 //        pnMain.add(home);
 //        pnMain.validate();
+        db = new database();
     }
     public void PhanQuyen() {
         frmDangNhap dn = new frmDangNhap();
@@ -320,7 +321,7 @@ public class frmTrangChu extends javax.swing.JFrame {
     static database db ;
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        db = new database();
+        
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
