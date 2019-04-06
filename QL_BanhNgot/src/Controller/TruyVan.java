@@ -69,4 +69,21 @@ public class TruyVan {
         String sql = "select a.MaHD, c.TenSP, b.SL, b.DonGia, a.NgayLap from HoaDon a, ChiTietHoaDon b, SanPham c where a.MaHD = b.MaHD AND b.MaSP = c.MaSP AND a.NgayLap like '%"+ngay+"%'";
         return db.ExcuteQueryGetTable(sql);
     }
+    public void ThemNV( String tennv,String sdt,String nam) {         
+        String sql = "set dateformat dmy insert into NhanVien(TenNV,SDT,NamSinh) values (N'"+tennv+"','"+sdt+"','"+nam+"')";
+        db.ExcuteQueryUpdateDB(sql);	
+    }
+    public void SuaNV(int id , String tennv,String sdt,String nam) {         
+        String sql = "set dateformat dmy update NhanVien set TenNV = N'"+tennv+"',SDT = '"+sdt+"', NamSinh = '"+nam+"' where MaNV ="+id+"";
+        db.ExcuteQueryUpdateDB(sql);	
+    }
+    public void XoaNV(int id) {	
+        String sql = "delete from NhanVien where  MaNV ="+id+"";
+        db.ExcuteQueryUpdateDB(sql);	
+    }
+    public ResultSet listNV(String ten)
+    {
+        String sql = "select * from NhanVien where TenNV like N'%"+ten+"%'";
+        return db.ExcuteQueryGetTable(sql);
+    }
 }
