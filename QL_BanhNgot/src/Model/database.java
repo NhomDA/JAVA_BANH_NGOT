@@ -16,7 +16,7 @@ import java.sql.Statement;
  * @author ASUS
  */
 public class database {
-    String connectionString = "jdbc:sqlserver://127.0.0.1:1433;databaseName=QLBanhNgot;user=dasksai;password=manakilosi";
+    String connectionString = "jdbc:sqlserver://127.0.0.1:1433;databaseName=QLBanhNgot;user=sa;password=1234";
     Connection conn;
     public database(){
        

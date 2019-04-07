@@ -74,7 +74,7 @@ public class frmDangNhap extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\Login.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("D:\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\Login.png")); // NOI18N
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -101,7 +101,7 @@ public class frmDangNhap extends javax.swing.JFrame {
         jLabel4.setText("Mật khẩu:");
 
         btnDangNhap.setBackground(new java.awt.Color(255, 255, 153));
-        btnDangNhap.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\login-30.png")); // NOI18N
+        btnDangNhap.setIcon(new javax.swing.ImageIcon("D:\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\login-30.png")); // NOI18N
         btnDangNhap.setText("Đăng nhập");
         btnDangNhap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
@@ -111,7 +111,7 @@ public class frmDangNhap extends javax.swing.JFrame {
         });
 
         btnThoat.setBackground(new java.awt.Color(255, 255, 153));
-        btnThoat.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\DA_JAVA\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\cancel-30.png")); // NOI18N
+        btnThoat.setIcon(new javax.swing.ImageIcon("D:\\JAVA_BANH_NGOT\\QL_BanhNgot\\images\\cancel-30.png")); // NOI18N
         btnThoat.setText("Thoát");
         btnThoat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnThoat.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +142,7 @@ public class frmDangNhap extends javax.swing.JFrame {
                         .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtMK)
                     .addComponent(txtTK))
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,7 +159,7 @@ public class frmDangNhap extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDangNhap)
                     .addComponent(btnThoat))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
@@ -167,7 +167,7 @@ public class frmDangNhap extends javax.swing.JFrame {
         panel2Layout.setHorizontalGroup(
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel2Layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
+                .addContainerGap(22, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

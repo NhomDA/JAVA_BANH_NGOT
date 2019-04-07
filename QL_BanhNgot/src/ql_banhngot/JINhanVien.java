@@ -463,11 +463,7 @@ public final class JINhanVien extends javax.swing.JInternalFrame {
         else{
             try{
                 ResultSet result = nhanvien.ShowNhanVienTheoTen(tennv);
-                //System.out.println(result.wasNull());
-                if(!result.wasNull()){
-                    JOptionPane.showMessageDialog(null,"Không tìm thấy nhân viên","Thông báo",1);
-                }
-                else{
+                System.out.println(result.wasNull());
                 ClearData();
                 while(result.next()){
                 String rows[] = new String[4]; 
@@ -477,12 +473,12 @@ public final class JINhanVien extends javax.swing.JInternalFrame {
                 rows[3] = result.getString(4);
                 tableModel.addRow(rows);
                 }
-                }
             }
             catch(SQLException e){
                 Logger.getLogger(JINhanVien.class.getName()).log(Level.SEVERE,null,e);
-                }
             }
+            
+        }
     }//GEN-LAST:event_btn_TimMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
